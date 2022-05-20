@@ -58,6 +58,12 @@ int main()
     }
     cout << "#####################" << endl; 
 
+    cout << "Calculate the mean and the variance of the row above.\n";
+    cout << "The mean is " << CalculateMean(row, m_cols) << endl;
+    cout << "The variance is " << CalculateVariance(column, n_rows) << endl;
+
+
+    cout << "#####################" << endl; 
     // delete pointer 
     
     for(int i=0; i<n_rows; i++)

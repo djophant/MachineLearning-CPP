@@ -6,11 +6,9 @@
  * @param N_REGIONS num
 */
 void printData(double** DataMatrix, int N_REGIONS, int M_WINES);
-
 void getRow(double** DataMatrix, int M_WINES, int row_index, double row[]);
-
 void getColumn(double** DataMatrix, int N_REGIONS, int column_index, double column[]);
-
-
+double CalculateMean(double values[], int length);
+double CalculateVariance(double values[], int length);
 
 #endif 

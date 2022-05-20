@@ -1,5 +1,6 @@
 #include "statistics.h"
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -29,4 +30,23 @@ void getColumn(double** DataMatrix, int N_REGIONS, int column_index, double colu
     {
         column[j] = DataMatrix[j][column_index];
     }
+}
+
+double CalculateMean(double values[], int length)
+{
+    double sum = 0.0;
+    for(int i=0; i<length; i++)
+        sum += values[i];
+    
+    return sum / length;
+}
+
+double CalculateVariance(double values[], int length)
+{
+    double sum = 0.0; 
+    double mean = CalculateMean(values, length);
+    for(int i=0; i<length; i++)
+        sum += pow(values[i]-mean, 2);
+    
+    return sum / (length-1);
 }

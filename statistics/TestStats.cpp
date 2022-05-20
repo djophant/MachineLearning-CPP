@@ -214,8 +214,7 @@ int main(int argc, char *argv[])
         std::cout << std::endl;
 
         demoArrayStats(sample, sample_length);
-        runTestsStats(sample, sample_length);
-
+        
         return 0;
     }
     else

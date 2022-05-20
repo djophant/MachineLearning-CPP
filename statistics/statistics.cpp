@@ -75,16 +75,6 @@ double GetSampleStandardDeviation(double values[], int length)
     return sqrt(sampleVariance);
 }
 
-// Statistics tests 
-void runTestsStats (double values[], int length) 
-{
-    std::cout << "--------------------------------------------------------------------------------" << std::endl
-              << "Your own tests could print something here. << std::endl;
-
-    // You can insert any code here
-
-    std::cout << "--------------------------------------------------------------------------------" << std::endl;
-}
 
 double CalculateCovariance(double values1[], double values2[], int lenght)
 {

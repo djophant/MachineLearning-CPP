@@ -13,5 +13,7 @@ double CalculateVariance(double values[], int length);
 double CalculateSampleVariance(double values[], int length);
 double GetStandardDeviation(double values[], int length);
 double GetSampleStandardDeviation(double values[], int length);
+double CalculateCovariance(double values1[], double values2[], int lenght);
+double CalculateCorrelation(double values1[], double values2[], int lenght);
 
 #endif 

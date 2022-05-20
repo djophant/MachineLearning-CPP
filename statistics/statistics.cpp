@@ -1,5 +1,6 @@
 #include "statistics.h"
 #include <iostream>
+#include <algorithm>
 #include <cmath>
 
 using namespace std;
@@ -71,4 +72,36 @@ double GetSampleStandardDeviation(double values[], int length)
 {
     double sampleVariance = CalculateSampleVariance(values, length);
     return sqrt(sampleVariance);
+}
+
+double CalculateCovariance(double values1[], double values2[], int lenght)
+{
+    int m = sizeof(values1) / sizeof(*values1);
+    int n = sizeof(values2) / sizeof(*values2);
+
+    if (m == n && std::equal(values1, values1 + m, values2))
+    {
+        return CalculateVariance(values1, lenght);
+    } 
+    else
+    {
+        double sum = 0.0;
+        double mean1 = CalculateMean(values1, lenght);
+        double mean2 = CalculateMean(values2, lenght);
+
+        for(int i=0; i<lenght; i++)
+            sum += (values1[i] - mean1) * (values2[i] - mean2);
+        
+        return sum / lenght;
+    }
+}
+
+double CalculateCorrelation(double values1[], double values2[], int lenght)
+{
+    double covariance = CalculateCovariance(values1, values2, lenght);
+    double variance1 = CalculateVariance(values1, lenght);
+    double variance2 = CalculateVariance(values2, lenght);
+    double denominator = sqrt(variance1 * variance2);
+
+    return covariance / denominator;
 }

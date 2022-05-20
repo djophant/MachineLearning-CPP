@@ -1,18 +1,8 @@
+#include "statistics.h"
 #include <iostream>
 
 using namespace std; 
 
-
-/** This function print the values in the data Matrix 
- * @param DataMatrix  a 2D array
- * @param N_REGIONS num
-*/
-
-void printData(double** DataMatrix, int N_REGIONS, int M_WINES);
-
-void getRow(double** DataMatrix, int M_WINES, int row_index, double row[]);
-
-void getColumn(double** DataMatrix, int N_REGIONS, int column_index, double column[]);
 
 
 int main()
@@ -28,6 +18,8 @@ int main()
     cout << "Enter elements of a matrix with " << n_rows << " rows and " 
                                                << m_cols << " columns\n";
 
+    cout << "#####################" << endl;
+
     for (int i=0; i<n_rows; i++)
     {
         dataMatrix[i] = new double[m_cols];
@@ -40,15 +32,31 @@ int main()
     // testing printData function 
 
     printData(dataMatrix, n_rows, m_cols);
+    
+    cout << "#####################" << endl;
 
     // testing getRow function 
     double row[m_cols];
 
     getRow(dataMatrix, m_cols, 1, row);
 
-    cout << row[0] << endl;
+    for(int i=0; i<m_cols; i++)
+    {
+        cout << row[i] << " ";
+    }
+    cout << endl;
+    cout << "#####################" << endl;
 
+    // testing getColumn function 
+    double column[n_rows];
 
+    getColumn(dataMatrix, n_rows, 1, column);
+
+    for(int i=0; i<n_rows; i++)
+    {
+        cout << column[i] << endl;
+    }
+    cout << "#####################" << endl; 
 
     // delete pointer 
     
@@ -58,25 +66,4 @@ int main()
     
 
     return 0;
-}
-
-void printData(double** DataMatrix, int N_REGIONS, int M_WINES)
-{
-    for(int i=0; i<N_REGIONS; i++)
-    {
-        for(int j=0; j<M_WINES; j++)
-        {
-            cout << DataMatrix[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
-
-void getRow(double** DataMatrix, int M_WINES, int row_index, double row[])
-{
-    for(int i=0; i<M_WINES; i++)
-    {
-        row[i] = DataMatrix[row_index][i];
-    }
-    cout << endl;
 }

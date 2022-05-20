@@ -1,6 +1,7 @@
 #include "statistics.h"
 #include <iostream>
 #include <algorithm>
+#include <vector>
 #include <cmath>
 
 using namespace std;
@@ -104,4 +105,101 @@ double CalculateCorrelation(double values1[], double values2[], int lenght)
     double denominator = sqrt(variance1 * variance2);
 
     return covariance / denominator;
+}
+
+
+
+void ComputeCovarianceMatrix(double** DataMatrix, double** CovarianceMatrix, int M_WINES, int N_REGIONS)
+{
+    
+}
+
+
+
+
+
+double **matrixFromArray (double array[], int rows, int columns) 
+{
+    double **matrix = new double*[rows];
+    for (int i = 0; i < rows; i++) {
+        matrix[i] = new double[columns];
+        for (int j = 0; j < columns; j++)
+            matrix[i][j] = array[i*columns + j];
+    }
+    return matrix;
+}
+
+double **transpose (double **matrix, int rows, int columns) 
+{
+    double **transposed = new double*[columns];
+    for (int i = 0; i < columns; i++) {
+        transposed[i] = new double[rows];
+        getColumn(matrix, rows, i, transposed[i]);
+    }
+    return transposed;
+}
+
+void readMatrix (double **matrix, int rows, int columns)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        matrix[i] = new double[columns];
+        for (int j = 0; j < columns; j++)
+            cin >> matrix[i][j];
+    }
+}
+
+void printArray (double values[], int length)
+{
+    for (int i = 0; i < length - 1; i++)
+        cout << values[i] << " ";
+
+    cout << values[length - 1];
+}
+
+// Prepare an empty matrix
+double **prepareMatrix(int rows, int columns) 
+{
+    double **matrix = new double* [rows];
+    for (int i = 0; i < rows; i++) {
+        matrix[i] = new double[columns];
+        for (int j = 0; j < columns; j++)
+            matrix[i][j] = 0;
+    }
+
+    return matrix;
+}
+
+double **unpack (double values[], vector<int> &scenario, int size, int rows, int columns) 
+{
+    double **matrix = new double*[size];
+    for (int i = 0; i < size; i++) {
+        matrix[i] = new double[size];
+        if (i < rows) {
+            for (int j = 0; j < columns; j++)
+                matrix[i][j] = values[i*columns + j];
+            for (int j = columns; j < size; j++)
+                matrix[i][j] = 1;
+        } else {
+            for (int j = 0; j < size; j++)
+                matrix[i][j] = 1;
+        }
+    }
+
+    return matrix;
+}
+
+double hash (double vector[], int length) 
+{
+    double sum  = 0;
+    for (int i = 0; i < length; i++)
+        sum += vector[i];
+    return sum;
+} 
+
+void cleanup (double **matrix, int rows)
+{
+    for (int i = 0; i < rows; i++)
+        delete[] matrix[i];
+    delete matrix;
 }

@@ -7,11 +7,11 @@ using namespace std;
 
 int main()
 {
-    double** dataMatrix;
     int n_rows, m_cols;
+    double** dataMatrix;
     cout << "Enter the number of rows" << endl;
     cin >> n_rows;
-    dataMatrix = new double*[n_rows];
+    //dataMatrix = new double*[n_rows];
     cout << "Enter the number of columns" << endl;
     cin >> m_cols;
 
@@ -19,15 +19,8 @@ int main()
                                                << m_cols << " columns\n";
 
     cout << "#####################" << endl;
-
-    for (int i=0; i<n_rows; i++)
-    {
-        dataMatrix[i] = new double[m_cols];
-        for(int j=0; j<m_cols; j++)
-        {
-            cin >> dataMatrix[i][j];
-        }
-    }
+    double arr[4] = {1, 2, 3, 4};
+    dataMatrix = matrixFromArray(arr, n_rows, m_cols);
 
     // testing printData function 
 
@@ -61,15 +54,12 @@ int main()
     cout << "Calculate the mean and the variance of the row above.\n";
     cout << "The mean is " << CalculateMean(row, m_cols) << endl;
     cout << "The variance is " << CalculateVariance(column, n_rows) << endl;
+    cout << "The covariance of row and cols is " << CalculateCovariance(row, column, n_rows) << endl;
 
 
     cout << "#####################" << endl; 
     // delete pointer 
-    
-    for(int i=0; i<n_rows; i++)
-        delete []dataMatrix[i];
-    delete []dataMatrix;
-    
+    cleanup(dataMatrix, n_rows);
 
     return 0;
 }

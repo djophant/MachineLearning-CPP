@@ -48,5 +48,27 @@ double CalculateVariance(double values[], int length)
     for(int i=0; i<length; i++)
         sum += pow(values[i]-mean, 2);
     
+    return sum / length;
+}
+
+double CalculateSampleVariance(double values[], int length)
+{
+    double sum = 0.0; 
+    double mean = CalculateMean(values, length);
+    for(int i=0; i<length; i++)
+        sum += pow(values[i]-mean, 2);
+    
     return sum / (length-1);
+}
+
+double GetStandardDeviation(double values[], int length)
+{
+    double variance = CalculateVariance(values, length);
+    return sqrt(variance);
+}
+
+double GetSampleStandardDeviation(double values[], int length)
+{
+    double sampleVariance = CalculateSampleVariance(values, length);
+    return sqrt(sampleVariance);
 }

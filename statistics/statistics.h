@@ -15,7 +15,7 @@ double GetSampleStandardDeviation(double values[], int length);
 double CalculateCovariance(double values1[], double values2[], int lenght);
 double CalculateCorrelation(double values1[], double values2[], int lenght);
 void ComputeCovarianceMatrix(double** DataMatrix, double** CovarianceMatrix, int M_WINES, int N_REGIONS);
-
+void runTestsStats (double values[], int length) ;
 /********************
  * Helper functions *
  ********************/
